@@ -1,11 +1,11 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const createTables = require('./config');
 const Promise = require('bluebird');
-const database = 'Unsplash';
+const database = 'splash';
 
 const connection = mysql.createConnection({
   user: 'Majdi_10',
-  password: 'Majdi_joiblia_10'
+  password: 'Majdi_joiblia_10',
 });
 
 const db = Promise.promisifyAll(connection, { multiArgs: true });

@@ -1,7 +1,14 @@
 const express = require('express');
-const database = require('./database');
+const database = require('../db/index');
 const app = express();
-const port = 1337;
+const port = 3000;
+
+database.connect((error)=>{
+  if(error) throw error
+  else{
+    console.log("database connected succefully")
+  }
+})
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
