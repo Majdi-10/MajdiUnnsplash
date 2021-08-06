@@ -6,7 +6,7 @@
   "scripts": {
     "webpack": "webpack --watch",
     "start": "nodemon server/index.js ",
-    "dev:react":"webpack serve",
+    "dev:react": "webpack serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -42,7 +42,12 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bluebird": "^3.7.2",
+    "blueimp-file-upload": "^10.31.0",
     "cloudinary": "^1.26.3",
+    "cloudinary-core": "^2.11.4",
+    "cloudinary-jquery-file-upload": "^2.11.4",
+    "cloudinary-react": "^1.7.0",
+    "jquery": "^3.6.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.0",
     "react": "^17.0.2",

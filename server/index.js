@@ -26,7 +26,7 @@ app.get('/images', (req, res) => {
 });
 
 
-app.post('/upload', (res,req)=>{
+app.post('upload', (res,req)=>{
   db.query("insert into splach (column1) values (?) ;", [req.body.splach], (err,result)=>{
     if(err) throw err;
     res.send({message:success})
