@@ -17,9 +17,15 @@ db.connect((error)=>{
   }
 })
 
-app.get('/', (req, res) => {
-  res.send()
+app.get('/images', (req, res) => {
+  db.query('select * from splach',(err,data)=>{
+    if(err) throw err
+    res.send(data)
+  })
+  
 });
+
+
 app.post('/upload', (res,req)=>{
   db.query("insert into splach (column1) values (?) ;", [req.body.splach], (err,result)=>{
     if(err) throw err;

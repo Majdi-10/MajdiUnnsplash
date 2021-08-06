@@ -6,6 +6,7 @@
   "scripts": {
     "webpack": "webpack --watch",
     "start": "nodemon server/index.js ",
+    "dev:react":"webpack serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -41,6 +42,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bluebird": "^3.7.2",
+    "cloudinary": "^1.26.3",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.0",
     "react": "^17.0.2",
