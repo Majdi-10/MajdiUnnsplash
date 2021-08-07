@@ -5,7 +5,7 @@ import App from './components/App.jsx'
 
 
 
-const HelloWorld = () => {
+const MyApp = () => {
     return (
        <div>
            <App/>
@@ -13,4 +13,4 @@ const HelloWorld = () => {
     );
 }
 
-ReactDOM.render(<HelloWorld />, document.getElementById("root"));
+ReactDOM.render(<MyApp  />, document.getElementById("root"));
