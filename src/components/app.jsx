@@ -49,7 +49,7 @@ const App = () => {
 
         readfiles.onload = function () {
             var output4 = document.getElementById('output');
-            output4.src = readfiles.result;
+            output4 = readfiles.result;
         }
 
         readfiles.readAsDataURL(e.target.files[0]);
