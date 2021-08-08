@@ -18,6 +18,7 @@ db.connect((error)=>{
   }
 })
 
+
 app.get('/images', (req, res) => {
   db.query('select * from mytable',(err,data)=>{
     if(err) throw err
