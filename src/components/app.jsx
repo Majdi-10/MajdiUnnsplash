@@ -1,23 +1,24 @@
 import React, { Component, useState, useEffect } from 'react';
 import { Image, Transformation, CloudinaryContext } from 'cloudinary-react';
 import axios from 'axios';
-
 import "./App.scss"
 
 const url = "https://api.cloudinary.com/v1_1/majdi10/image/upload";
+
 const preset = "unsplash10"
 
 const App = () => {
 
     const [Name, setName] = useState("");
     const [urlImage, setUrl] = useState("");
-    const [arr, setArr] = useState([])
-   
+    const [arr, setArr] = useState([]);
+
     // get imagesRequest
+
     const getimages = () => {
         axios.get('/images').then((res) => {
             setArr(res.data)
-            //   console.log(arr)
+
         })
     }
 
@@ -25,11 +26,10 @@ const App = () => {
         getimages()
     })
 
- // uploading the image and save it in database
+    // uploading the image and save it in database
+
     const uploading = () => {
-        // const ImageData = new FormData();
-        // ImageData.append('file', ChossenImage);
-        // ImageData.append("upload_preset", "unsplash10");
+
 
         console.log("front", Name)
         console.log("front", urlImage)
@@ -48,8 +48,8 @@ const App = () => {
         var readfiles = new FileReader();
 
         readfiles.onload = function () {
-            var output4 = document.getElementById('output');
-            output4 = readfiles.result;
+            var fileoutput = document.getElementById('output');
+            fileoutput = readfiles.result;
         }
 
         readfiles.readAsDataURL(e.target.files[0]);
@@ -75,9 +75,16 @@ const App = () => {
 
     // delete an image
 
-    const handleDelete=(id)=>{
-        axios.delete('/deletImage/'+ id ).then((res)=>{
+    const handleDelete = (id) => {
+        axios.delete('/delimage/' + id).then((res) => {
             console.log(res)
+        })
+
+    }
+
+    const handleSearch = (Name)=>{
+        axios.get('/searchimg/'+ Name).then((res)=>{
+            console.log(Name)
         })
 
     }
@@ -91,7 +98,7 @@ const App = () => {
                 <div className="input-container">
                     <input type="text" placeholder="Search herer" onChange={(e) => (e.target.value)} />
                 </div>
-                <button type="submit" ><i className="fa fa-search">Search</i></button>
+                <button type="submit"  onClick={handleSearch}><i className="fa fa-search">Search</i></button>
             </div>
             <br />
             <input type="file" id="fileupload" onChange={GetImageUrl} ></input>
@@ -109,10 +116,10 @@ const App = () => {
 
                         <CloudinaryContext cloudName="majdi10" key={index}>
                             <div>
-                            <Image publicId={element.urlImage}  >
-                                <Transformation width="100" height="100" gravity="faces" crop="thumb" />
-                            </Image>
-                            <p>{element.Name}</p>
+                                <Image style={{ width: 150 ,  height: 220 ,  margin: 10 , borderRadius:8, boxshadow:8 }} publicId={element.urlImage}  >
+                                    <Transformation width="100" height="100" gravity="faces" crop="thumb" />
+                                </Image>
+                                <p>{element.Name}</p>
                             </div>
                             <button id="delbtn" onClick={handleDelete}>remove</button>
                         </CloudinaryContext>
