@@ -82,6 +82,8 @@ const App = () => {
 
     }
 
+    // search for an imagename
+
     const handleSearch = (Name)=>{
         axios.get('/searchimg/'+ Name).then((res)=>{
             console.log(Name)
@@ -121,7 +123,7 @@ const App = () => {
                                 </Image>
                                 <p>{element.Name}</p>
                             </div>
-                            <button id="delbtn" onClick={handleDelete}>remove</button>
+                            <button id="delbtn" onClick={()=>handleDelete(element.id)}>remove</button>
                         </CloudinaryContext>
                     ))
                 }
