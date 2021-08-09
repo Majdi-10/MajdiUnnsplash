@@ -73,6 +73,15 @@ const App = () => {
             })
     }
 
+    // delete an image
+
+    const handleDelete=(id)=>{
+        axios.delete('/deletImage/'+ id ).then((res)=>{
+            console.log(res)
+        })
+
+    }
+
     return (
 
         <div>
@@ -99,9 +108,13 @@ const App = () => {
                     arr.map((element, index) => (
 
                         <CloudinaryContext cloudName="majdi10" key={index}>
+                            <div>
                             <Image publicId={element.urlImage}  >
                                 <Transformation width="100" height="100" gravity="faces" crop="thumb" />
                             </Image>
+                            <p>{element.Name}</p>
+                            </div>
+                            <button id="delbtn" onClick={handleDelete}>remove</button>
                         </CloudinaryContext>
                     ))
                 }

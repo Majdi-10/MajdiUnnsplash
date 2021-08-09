@@ -18,6 +18,7 @@ db.connect((error)=>{
   }
 })
 
+// get request of the images
 
 app.get('/images', (req, res) => {
   db.query('select * from mytable',(err,data)=>{
@@ -27,6 +28,7 @@ app.get('/images', (req, res) => {
   
 });
 
+// post request to create and save 
 
 app.post('/uploading',(req,res)=>{
   //send a post req to "https://api.cloudinary.com/v1_1/majdi10/image/upload" and the send back the data to the front end req.body
@@ -37,6 +39,15 @@ app.post('/uploading',(req,res)=>{
     res.send({message: 'posted'})
   })
 })
+
+// delete request to delete an image
+
+app.delete('/deletImage/:id', (req,res)=>{
+  db.query('delete from mytable where id=?;', [req.params.id],(err,result)=>{
+    if(err) throw err;
+    res.send(result)
+  })
+});
 
 
 
